@@ -38,7 +38,7 @@ This tool allows AI assistants to:
 ### Step 2: Clone and Setup
 ```bash
 # Clone this repository
-git clone https://github.com/dperussina/mssql-mcp-server.git
+git clone https://github.com/dteston_kmc/mssql-mcp-server.git
 
 # Navigate to the project directory
 cd mssql-mcp-server
