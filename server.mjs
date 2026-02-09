@@ -141,8 +141,8 @@ try {
     registerDatabaseTools(server);
 
     // Debug log of registered tools
-    console.log("DEBUG: Tools after registration:");
-    console.log(Object.keys(server._tools || {}));
+    logger.error("DEBUG: Tools after registration:");
+    logger.error(Object.keys(server._tools || {}));
 
     // Register database resources (tables, schema, views, etc.)
     logger.info("Registering database resources...");
