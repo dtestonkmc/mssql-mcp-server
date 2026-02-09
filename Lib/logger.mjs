@@ -56,8 +56,10 @@ export const logger = winston.createLogger({
     defaultMeta: { service: 'mcp-server' },
     format: logFormats[LOG_FORMAT] || logFormats.json,
     transports: [
-        // Console transport
-        new winston.transports.Console(),
+        // Console transport - IMPORTANT: write to stderr for STDIO MCP transport
+        new winston.transports.Console({
+            stderrLevels: ['error', 'warn', 'info', 'http', 'verbose', 'debug', 'silly']
+        }),
         
         // File transport with rotation
         new winston.transports.File({
@@ -69,13 +71,6 @@ export const logger = winston.createLogger({
     ],
     exitOnError: false // Don't crash on exception
 });
-
-// Create a stream object for Morgan HTTP logging
-export const logStream = {
-    write: message => {
-        logger.http(message.trim());
-    }
-};
 
 // Add request context middleware for Express
 export const addRequestContext = (req, res, next) => {
